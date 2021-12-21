@@ -16,7 +16,37 @@
     let formattedDate = currentDate.toString().split(" ");
     formattedDate = formattedDate[1] + " " + formattedDate[2] + ", " + formattedDate[3]
 
+    let pagination = 1;
+    let paginationEnd = Math.ceil(photos.length / 10);
+    let paginatedPhotosStart = 1;
+    let paginatedPhotosEnd = 10;
+    let paginatedPhotosCounter = 10;
+    let parsedPhotos = photos.slice(paginatedPhotosStart - 1, paginatedPhotosStart - 1 + paginatedPhotosCounter);
 
+    function calculatePhotoMaxPagination() {
+        paginatedPhotosEnd = paginatedPhotosStart - 1 + paginatedPhotosCounter < photos.length
+            ? paginatedPhotosStart - 1 + paginatedPhotosCounter
+            : photos.length;
+    }
+
+    function handlePaginationPrev() {
+        pagination--;
+        paginatedPhotosStart = paginatedPhotosStart - paginatedPhotosCounter;
+        refreshParsedPhotos();
+        calculatePhotoMaxPagination();
+    }
+
+    function handlePaginationNext() {
+        pagination++;
+        paginatedPhotosStart = paginatedPhotosStart + paginatedPhotosCounter;
+        refreshParsedPhotos();
+        calculatePhotoMaxPagination();
+    }
+
+    function refreshParsedPhotos() {
+        parsedPhotos = photos.slice(paginatedPhotosStart - 1, paginatedPhotosStart - 1 + paginatedPhotosCounter);
+        parsedPhotos = [...parsedPhotos];
+    }
 </script>
 
 
@@ -104,11 +134,28 @@
         <div class="bg-white mb-4">
             <h3 class="header-green">{name}'s Comments:</h3>
             <div class="padding-content-small">
-                <h4 class="subheader-green">Listing all {photos.length} comments</h4>
+                <div class="d-flex align-items-center justify-content-between mb-2">
+                    <h4 class="subheader-green">
+                        Listing
+                        {paginatedPhotosStart} - {paginatedPhotosEnd}
+                        out of
+                        {photos.length}
+                        comments
+                    </h4>
 
-                {#each photos as photo, index}
-                    <CommentBox src={photo} counter={index} />
-                {/each}
+                    <button class="btn btn-light btn-sm fw-bold ms-auto me-2"
+                            on:click={handlePaginationPrev} disabled={pagination <= 1}>Previous</button>
+
+                    <button class="btn btn-light btn-sm fw-bold"
+                            on:click={handlePaginationNext} disabled={pagination >= paginationEnd}>Next</button>
+                </div><!-- end flexbox -->
+
+
+                {#key pagination}
+                    {#each parsedPhotos as photo, index}
+                        <CommentBox src={photo} counter={index + (paginatedPhotosCounter * (pagination - 1))} />
+                    {/each}
+                {/key}
             </div><!-- end small padding -->
         </div><!-- end spacer -->
     </section><!-- end col -->
@@ -132,6 +179,10 @@
         border: 2px solid black;
     }
 
+    .info-box {
+        background-color: #fff;
+    }
+
     .info-box h3 {
         font-size: 16px;
         font-weight: 700;
@@ -142,7 +193,6 @@
     }
 
     .info-box-content {
-        background-color: #fff;
         padding: 4px 4px 0 4px;
     }
 
