@@ -18,13 +18,13 @@
 
 
 <div class="row">
-    <div class="col-md-4 fw-bold">
-        <div class="title h-100 px-5 pt-3">
+    <div class="col-4 fw-bold">
+        <div class="title h-100 px-lg-5 px-3 pt-3">
             <FriendBlock columns={false} name={randomFriend.name} src={randomFriend.image} />
         </div>
     </div><!-- end col -->
 
-    <div class="col-md-8">
+    <div class="col-8">
         <div class="content h-100">
             <p class="small fw-bold mb-2">{formattedDate}</p>
             <Photo {src} />
@@ -48,11 +48,11 @@
         margin-bottom: 4px;
     }
 
-    .col-md-4 {
+    .col-4 {
         padding: 0 2px 0 12px;
     }
 
-    .col-md-8 {
+    .col-8 {
         padding: 0 12px 0 2px;
     }
 </style>

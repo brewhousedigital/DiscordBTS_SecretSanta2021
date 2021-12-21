@@ -29,11 +29,13 @@
         margin-bottom: 4px;
     }
 
-    .col-md-5 {
-        padding: 0 2px 0 12px;
-    }
+    @media screen and (min-width: 768px) {
+        .col-md-5 {
+            padding: 0 2px 0 12px;
+        }
 
-    .col-md-7 {
-        padding: 0 12px 0 2px;
+        .col-md-7 {
+            padding: 0 12px 0 2px;
+        }
     }
 </style>

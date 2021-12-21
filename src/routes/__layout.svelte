@@ -30,11 +30,11 @@
         background-image: url("/images/background-2.jpg");
         background-position: center;
         background-attachment: fixed;
-        font-family: cursive;
     }
 
     :global(body.different-bg) {
         background-image: url("/images/background.jpg");
+        font-family: cursive;
     }
 
     main {
