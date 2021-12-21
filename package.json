@@ -1,0 +1,17 @@
+{
+  "name": "discordbts-secretsanta2021",
+  "version": "0.0.1",
+  "scripts": {
+    "start": "svelte-kit dev -p 700",
+    "dev": "svelte-kit dev -p 700",
+    "build": "svelte-kit build",
+    "package": "svelte-kit package",
+    "preview": "svelte-kit preview"
+  },
+  "devDependencies": {
+    "@sveltejs/adapter-auto": "next",
+    "@sveltejs/kit": "next",
+    "svelte": "^3.44.0"
+  },
+  "type": "module"
+}
