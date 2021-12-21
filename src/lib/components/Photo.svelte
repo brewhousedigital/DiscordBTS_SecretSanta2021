@@ -4,12 +4,11 @@
     let fileType = src.split(".");
     fileType = fileType[fileType.length - 1];
     fileType = fileType.toLowerCase();
-
 </script>
 
 
 {#if fileType === "mp4"}
-    <video width="100%" loop autoplay muted>
+    <video width="100%" loop autoplay muted controls>
         <source src="/images/photos/{src}" type="video/mp4">
         Your browser does not support the video tag.
     </video>
