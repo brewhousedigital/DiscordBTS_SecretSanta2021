@@ -10,7 +10,7 @@
 
 
 {#if fileType === "mp4"}
-    <video width="100%" class="{classes}" loop autoplay muted>
+    <video width="100%" class="{classes}" loop autoplay muted playsinline>
         <source src="{src}" type="video/mp4" aria-label={alt}>
         Your browser does not support the video tag.
     </video>
