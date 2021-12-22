@@ -46,7 +46,7 @@
         <div class="col-xl-5">
             <div class="d-flex align-items-center">
                 <img src="/images/logo-white-sm.png" alt="BTS logo" id="header-logo-image" class="img-fluid">
-                <h1>myspace</h1>
+                <h1>(ar)myspace</h1>
             </div>
         </div><!-- end col -->
 
