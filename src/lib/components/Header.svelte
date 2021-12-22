@@ -11,19 +11,24 @@
     let searchError = false;
     let searchResults = [];
 
+    // Copy the JSON list
+    let temporaryArray = [...photos];
+    let searchModalKey = Math.random();
+
     function handleSearch(e) {
         e.preventDefault();
+
         searchResults = [];
 
-        // Copy the JSON list
-        let temporaryArray = [...photos];
-
         // Randomize the list
-        shuffleArray(temporaryArray)
+        shuffleArray(temporaryArray);
 
         // Grab ten
         searchResults = temporaryArray.slice(0, 10);
         searchResults = [...searchResults];
+
+        // Reset the key
+        searchModalKey = Math.random();
 
         let formattedSearchValue = searchValue.toLowerCase();
         let modalElement = document.getElementById('searchModal');
@@ -73,9 +78,11 @@
                 {/if}
 
                 <div class="masonry-grid">
+                    {#key searchModalKey}
                 {#each searchResults as photo}
                     <Photo src="/images/photos/{photo}" />
                 {/each}
+                    {/key}
                 </div>
             </div>
             <div class="modal-footer border-0">
