@@ -11,7 +11,7 @@
 
 <div class="{columns ? 'col-md-3 col-6' : ''} text-center mb-5">
     <p class="mb-1 bg-dark"
-       style="color: {color}; {allFriendsList && 'display:flex;align-items:center;justify-content:center;height:48px'}">{name}</p>
+       style="color: {color}; padding: 0 1px; {allFriendsList && 'display:flex;align-items:center;justify-content:center;height:48px'}">{name}</p>
     <Photo src={"/images/friends/" + src} alt="Profile pic for {name}" classes="img-fluid d-block" />
 </div>
 
