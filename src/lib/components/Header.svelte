@@ -74,7 +74,7 @@
 
                 <div class="masonry-grid">
                 {#each searchResults as photo}
-                    <Photo src={photo} />
+                    <Photo src="/images/photos/{photo}" />
                 {/each}
                 </div>
             </div>
