@@ -13,10 +13,12 @@
 
     let birthday = "08-17-1991"
     let currentDate = new Date();
-    currentDate = currentDate.getTime();
     let birthdayDate = new Date(birthday);
-    birthdayDate = birthdayDate.getTime();
+    alert("currentDate " + currentDate)
+    alert("birthdayDate " + birthdayDate)
+    alert("subtracted " + (currentDate - birthdayDate))
     let age = Math.floor((currentDate - birthdayDate) / 1000 / 60 /60 / 24 / 365);
+    alert("age " + age)
     let formattedDate = currentDate.toString();
     formattedDate = formattedDate.split(" ");
     formattedDate = formattedDate[1] + " " + formattedDate[2] + ", " + formattedDate[3]
