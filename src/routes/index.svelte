@@ -14,8 +14,9 @@
     let currentDate = new Date();
     let birthdayDate = new Date(birthday);
     let age = Math.floor((currentDate - birthdayDate) / 1000 / 60 /60 / 24 / 365);
+
     let formattedDate = currentDate;
-    formattedDate = currentDate.toString();
+    formattedDate = formattedDate.toString();
     formattedDate = formattedDate.split(" ");
     formattedDate = formattedDate[1] + " " + formattedDate[2] + ", " + formattedDate[3]
 
