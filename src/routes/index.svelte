@@ -5,8 +5,9 @@
     import topFriends from "$lib/data/friendsTop.json";
     import allFriends from "$lib/data/friendsAll.json";
     import CommentBox from "$lib/components/CommentBox.svelte";
+    import CommentPagination from "$lib/components/CommentPagination.svelte";
 
-    let friendsPlusOne = [...topFriends, {"name": "Raiden", "image": "friend-raiden.jpg"}]
+    let friendsPlusOne = [...topFriends, {"name": "PhucdatRaiden", "image": "friend-raiden.jpg", "color": "#69c77a"}]
 
     let name = "Coco 💜 M.Y.";
 
@@ -16,6 +17,8 @@
     let age = Math.floor((currentDate - birthdayDate) / 1000 / 60 /60 / 24 / 365);
     let formattedDate = currentDate.toString().split(" ");
     formattedDate = formattedDate[1] + " " + formattedDate[2] + ", " + formattedDate[3]
+
+    let commentScrollHeight = 0;
 
     let pagination = 1;
     let paginationEnd = Math.ceil(photos.length / 10);
@@ -47,8 +50,19 @@
     function refreshParsedPhotos() {
         parsedPhotos = photos.slice(paginatedPhotosStart - 1, paginatedPhotosStart - 1 + paginatedPhotosCounter);
         parsedPhotos = [...parsedPhotos];
+
+        handleCommentScroll();
+    }
+
+    function handleCommentScroll() {
+        let lol = document.getElementById("comments-section")
+        console.log(">>>lol.offsetHeight", lol.offsetTop)
+        commentScrollHeight = lol.offsetTop
     }
 </script>
+
+
+<svelte:window bind:scrollY={commentScrollHeight}/>
 
 
 <div class="row">
@@ -124,7 +138,7 @@
 
                 <div class="row">
                     {#each friendsPlusOne as friend}
-                        <FriendBlock name={friend.name} src={friend.image} />
+                        <FriendBlock name={friend.name} src={friend.image} color={friend.color} />
                     {/each}
                 </div><!-- end row -->
 
@@ -141,7 +155,7 @@
             </div><!-- end small padding -->
         </div><!-- end spacer -->
 
-        <div class="bg-white shadow-lg mb-4">
+        <div id="comments-section" class="bg-white shadow-lg mb-4">
             <h3 class="header-green">{name}'s Comments:</h3>
             <div class="padding-content-small">
                 <div class="d-flex align-items-center justify-content-between mb-2">
@@ -166,6 +180,15 @@
                         <CommentBox src={photo} counter={index + (paginatedPhotosCounter * (pagination - 1))} />
                     {/each}
                 {/key}
+
+
+                <div class="text-end py-4">
+                    <button class="btn btn-light btn-sm fw-bold ms-auto me-2"
+                            on:click={handlePaginationPrev} disabled={pagination <= 1}>Previous</button>
+
+                    <button class="btn btn-light btn-sm fw-bold"
+                            on:click={handlePaginationNext} disabled={pagination >= paginationEnd}>Next</button>
+                </div>
             </div><!-- end small padding -->
         </div><!-- end spacer -->
     </section><!-- end col -->
@@ -183,7 +206,7 @@
             <div class="modal-body">
                 <div class="row">
                     {#each allFriends as friend}
-                        <FriendBlock name={friend.name} src={friend.image} />
+                        <FriendBlock name={friend.name} src={friend.image} color={friend.color} allFriendsList={true} />
                     {/each}
                 </div>
             </div>

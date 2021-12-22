@@ -18,9 +18,9 @@
 
 
 <div class="row">
-    <div class="col-4 fw-bold">
+    <div class="col-4">
         <div class="title h-100 px-lg-5 px-3 pt-3">
-            <FriendBlock columns={false} name={randomFriend.name} src={randomFriend.image} />
+            <FriendBlock columns={false} name={randomFriend.name} color={randomFriend.color} src={randomFriend.image} />
         </div>
     </div><!-- end col -->
 
