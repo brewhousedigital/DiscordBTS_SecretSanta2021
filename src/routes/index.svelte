@@ -13,7 +13,8 @@
     let birthday = "08-17-1991"
     let currentDate = new Date();
     let birthdayDate = new Date(birthday);
-    let age = Math.floor((currentDate - birthdayDate) / 1000 / 60 /60 / 24 / 365);
+    let tempAge = Number(currentDate - birthdayDate);
+    let age = Math.floor(tempAge / 1000 / 60 /60 / 24 / 365);
 
     let formattedDate = currentDate;
     formattedDate = formattedDate.toString();
