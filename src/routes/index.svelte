@@ -5,7 +5,6 @@
     import topFriends from "$lib/data/friendsTop.json";
     import allFriends from "$lib/data/friendsAll.json";
     import CommentBox from "$lib/components/CommentBox.svelte";
-    import CommentPagination from "$lib/components/CommentPagination.svelte";
 
     let friendsPlusOne = [...topFriends, {"name": "PhucdatRaiden", "image": "friend-raiden.jpg", "color": "#69c77a"}]
 
@@ -14,12 +13,9 @@
     let birthday = "08-17-1991"
     let currentDate = new Date();
     let birthdayDate = new Date(birthday);
-    alert("currentDate " + currentDate)
-    alert("birthdayDate " + birthdayDate)
-    alert("subtracted " + (currentDate - birthdayDate))
     let age = Math.floor((currentDate - birthdayDate) / 1000 / 60 /60 / 24 / 365);
-    alert("age " + age)
-    let formattedDate = currentDate.toString();
+    let formattedDate = currentDate;
+    formattedDate = currentDate.toString();
     formattedDate = formattedDate.split(" ");
     formattedDate = formattedDate[1] + " " + formattedDate[2] + ", " + formattedDate[3]
 
