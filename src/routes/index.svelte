@@ -10,7 +10,7 @@
 
     let name = "Coco 💜 M.Y.";
 
-    let birthday = "08-17-1991"
+    let birthday = "1991-08-17T00:00:00"
     let currentDate = new Date();
     let birthdayDate = new Date(birthday);
     let tempAge = Number(currentDate - birthdayDate);
