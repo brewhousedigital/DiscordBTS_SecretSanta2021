@@ -1,5 +1,7 @@
 <script>
     export let src = "";
+    export let alt = "";
+    export let classes = "";
 
     let fileType = src.split(".");
     fileType = fileType[fileType.length - 1];
@@ -8,12 +10,12 @@
 
 
 {#if fileType === "mp4"}
-    <video width="100%" loop autoplay muted controls>
-        <source src="/images/photos/{src}" type="video/mp4">
+    <video width="100%" class="{classes}" loop autoplay muted>
+        <source src="{src}" type="video/mp4" aria-label={alt}>
         Your browser does not support the video tag.
     </video>
 {:else}
-    <img src="/images/photos/{src}" alt="" class="img-fluid" loading="lazy">
+    <img src="{src}" alt={alt} class="img-fluid {classes}" loading="lazy">
 {/if}
 
 

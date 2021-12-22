@@ -2,10 +2,11 @@
     import InfoBoxItem from "$lib/components/InfoBoxItem.svelte";
     import FriendBlock from "$lib/components/FriendBlock.svelte";
     import photos from "$lib/data/photos.json";
-    import friends from "$lib/data/friends.json";
+    import topFriends from "$lib/data/friendsTop.json";
+    import allFriends from "$lib/data/friendsAll.json";
     import CommentBox from "$lib/components/CommentBox.svelte";
 
-    let friendsPlusOne = [...friends, {"name": "Raiden", "image": "friend-raiden.jpg"}]
+    let friendsPlusOne = [...topFriends, {"name": "Raiden", "image": "friend-raiden.jpg"}]
 
     let name = "Coco 💜 M.Y.";
 
@@ -52,7 +53,7 @@
 
 <div class="row">
     <aside class="col-xl-5">
-        <div class="homepage-profile bg-white">
+        <div class="homepage-profile border-thick bg-white">
         <h2 class="mb-4">{name}</h2>
 
         <div class="row align-items-center">
@@ -76,8 +77,8 @@
             <p class="mb-0">https://iloveminyoongi613.netlify.app</p>
         </div>
 
-        <div class="song-embed mb-4">
-            <iframe width="100%" height="150" src="https://www.youtube-nocookie.com/embed/qGjAWJ2zWWI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <div class="song-embed border-thick mb-4">
+            <iframe width="100%" height="150" class="d-block m-0 p-0" src="https://www.youtube-nocookie.com/embed/qGjAWJ2zWWI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div><!-- song embed -->
 
         <div class="info-box border-thick mb-4">
@@ -107,7 +108,7 @@
     <section class="col-xl-7">
         <img src="/images/banner-2.jpg" class="img-fluid mb-4 d-block" alt="banner for Suga">
 
-        <div class="bg-white mb-4 pb-3">
+        <div class="bg-white shadow-lg mb-4 pb-3">
             <h3 class="header-green">{name}'s Blurbs:</h3>
             <div class="padding-content-small">
                 <h4 class="subheader-green">About me:</h4>
@@ -115,7 +116,7 @@
             </div><!-- end small padding -->
         </div><!-- end spacer -->
 
-        <div class="bg-white mb-5">
+        <div class="bg-white shadow-lg mb-5">
             <h3 class="header-green">{name}'s Friend Space</h3>
 
             <div class="padding-content-small">
@@ -127,11 +128,20 @@
                     {/each}
                 </div><!-- end row -->
 
-                <p class="text-end"><a href="https://www.google.com/search?as_st=y&tbm=isch&as_q=yoongi&as_epq=&as_oq=&as_eq=&imgsz=&imgar=&imgc=&imgcolor=&imgtype=&cr=&as_sitesearch=&safe=images&as_filetype=&tbs=" target="_blank" rel="noreferrer">View all of {name}'s Friends</a></p>
+                <p class="text-end">
+                    <!--<a href="https://www.google.com/search?as_st=y&tbm=isch&as_q=yoongi&as_epq=&as_oq=&as_eq=&imgsz=&imgar=&imgc=&imgcolor=&imgtype=&cr=&as_sitesearch=&safe=images&as_filetype=&tbs=" target="_blank" rel="noreferrer">View more of {name}'s Friends</a>-->
+
+                    <button type="button"
+                            class="btn btn-link px-4"
+                            data-bs-toggle="modal"
+                            data-bs-target="#moreFriendsModal">View more of {name}'s Friends</button>
+                </p>
+
+
             </div><!-- end small padding -->
         </div><!-- end spacer -->
 
-        <div class="bg-white mb-4">
+        <div class="bg-white shadow-lg mb-4">
             <h3 class="header-green">{name}'s Comments:</h3>
             <div class="padding-content-small">
                 <div class="d-flex align-items-center justify-content-between mb-2">
@@ -160,6 +170,31 @@
         </div><!-- end spacer -->
     </section><!-- end col -->
 </div><!-- end row -->
+
+
+
+<div class="modal fade" id="moreFriendsModal" tabindex="-1" aria-labelledby="moreFriendsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header border-0">
+                <h5 class="modal-title" id="moreFriendsModalLabel">{name}'s Friends</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    {#each allFriends as friend}
+                        <FriendBlock name={friend.name} src={friend.image} />
+                    {/each}
+                </div>
+            </div>
+            <div class="modal-footer border-0">
+                <button type="button" class="btn btn-secondary px-5" data-bs-dismiss="modal">Close 💜</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 
 
 <style>

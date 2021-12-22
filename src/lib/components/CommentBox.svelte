@@ -1,5 +1,5 @@
 <script>
-    import friends from "$lib/data/friends.json";
+    import friends from "$lib/data/friendsAll.json";
     import Photo from "$lib/components/Photo.svelte";
     import FriendBlock from "$lib/components/FriendBlock.svelte";
 
@@ -27,7 +27,7 @@
     <div class="col-8">
         <div class="content h-100">
             <p class="small fw-bold mb-2">{formattedDate}</p>
-            <Photo {src} />
+            <Photo src="/images/photos/{src}" />
         </div>
     </div><!-- end col -->
 </div><!-- end row -->
