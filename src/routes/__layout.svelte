@@ -22,6 +22,9 @@
     <main>
         <slot></slot>
     </main>
+
+    <p class="text-center mt-5 mb-0 fw-bold">Arr-chive Secret Santa 2021</p>
+    <p class="text-center">From Squid and Mr Squid to Coco</p>
 </div>
 
 
